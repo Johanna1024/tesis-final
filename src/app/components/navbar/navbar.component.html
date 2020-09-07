@@ -1,0 +1,41 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <a class="navbar-brand" href="#">
+    <img
+      src="assets/img/logo-pw-usb_0.png"
+      height="130"
+      class="d-inline-block align-top"
+      alt=""
+      loading="lazy"
+    />&nbsp;
+  </a>
+
+  <div class="collapse navbar-collapse" id="navbarText">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item" routerLinkActive="active">
+        <a class="nav-link" routerLink="/home">Proyecto</a>
+      </li>
+      <li class="nav-item" routerLinkActive="active">
+        <a class="nav-link" routerLink="/integrantes">Integrantes</a>
+      </li>
+      <li *ngIf="auth.loggedIn" class="nav-item" routerLinkActive="active">
+        <a class="nav-link" routerLink="/protegida">Usuario Auth</a>
+      </li>
+    </ul>
+    <span class="navbar-text">
+      <button
+        (click)="auth.login()"
+        *ngIf="!auth.loggedIn"
+        class="btn btn-primary btn-lg"
+      >
+        Ingresar
+      </button>
+      <button
+        (click)="auth.logout()"
+        *ngIf="auth.loggedIn"
+        class="btn btn-danger btn-lg"
+      >
+        Salir
+      </button>
+    </span>
+  </div>
+</nav>
