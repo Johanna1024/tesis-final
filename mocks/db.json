@@ -2,10 +2,10 @@
   "users": [
     {
       "id": 3,
-      "name": "natalia lozano cardona",
+      "password": "$2a$10$HOQ3Hk9njPKbD7JGy3240Os1qDldxxhMYhD6CaonNT6euuGyoD9Ny",
+      "name": "natalia lozano cardonaaaaaa",
       "perfil": "AD",
-      "email": "nlozano@gmail.com",
-      "password": "Password2020"
+      "email": "nlozano@gmail.com"
     },
     {
       "id": 4,

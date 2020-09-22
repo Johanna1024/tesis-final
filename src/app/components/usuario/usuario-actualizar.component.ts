@@ -41,9 +41,17 @@ export class UsuarioActualizarComponent implements OnInit {
 
     console.log(form.value);
 
+    let authData = {
+      id: this.usuario.id,
+      password: this.usuario.password,
+      ...form.value,
+    };
+
+    console.log(authData);
+
     // Autenticar Usuario
     this.jsonServer
-      .actualizarUsuario(form.value, this.usuario.id)
+      .actualizarUsuario(authData, this.usuario.id)
       .subscribe((res) => {
         console.log(res);
         this.alertActualizaUser = true;
