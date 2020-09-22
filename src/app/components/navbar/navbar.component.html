@@ -17,21 +17,26 @@
       <li class="nav-item" routerLinkActive="active">
         <a class="nav-link" routerLink="/integrantes">Integrantes</a>
       </li>
-      <li *ngIf="auth.loggedIn" class="nav-item" routerLinkActive="active">
-        <a class="nav-link" routerLink="/protegida">Usuario Auth</a>
+      <li
+        *ngIf="(authUser | json) != ({} | json)"
+        class="nav-item"
+        routerLinkActive="active"
+      >
+        <a class="nav-link" routerLink="/usuarios">Usuarios</a>
       </li>
     </ul>
     <span class="navbar-text">
       <button
-        (click)="auth.login()"
-        *ngIf="!auth.loggedIn"
+        (click)="login()"
+        routerLink="/login"
+        *ngIf="(authUser | json) == ({} | json)"
         class="btn btn-primary btn-lg"
       >
         Ingresar
       </button>
       <button
-        (click)="auth.logout()"
-        *ngIf="auth.loggedIn"
+        (click)="logout()"
+        *ngIf="(authUser | json) != ({} | json)"
         class="btn btn-danger btn-lg"
       >
         Salir

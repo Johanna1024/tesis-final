@@ -1,0 +1,43 @@
+{
+  "users": [
+    {
+      "id": 2,
+      "name": "julian velasquez",
+      "email": "carjul20@gmail.com",
+      "password": "Password2020"
+    },
+    {
+      "id": 3,
+      "name": "natalia lozano cardona",
+      "email": "nlozano@gmail.com",
+      "password": "Password2020"
+    },
+    {
+      "id": 4,
+      "name": "Camilo velasquez",
+      "email": "nlozano@gmail.com",
+      "password": "Password2020"
+    },
+    {
+      "email": "panda@gmail.com",
+      "password": "$2a$10$rpa9T7KoEfItlR98SzbQJuQullyilN8dW2CY8kcLPy4O76POWRYQG",
+      "id": 21,
+      "name": "panda"
+    },
+    {
+      "email": "avesd@gmail.com",
+      "password": "$2a$10$5wSDHhgkHUeRMvYvlhC1TO1uXL4DpIabP6YGXCnF4lTJDsKz8B8b.",
+      "id": 67,
+      "name": "panda"
+    },
+    {
+      "email": "adddd@gmail.co",
+      "password": "$2a$10$d9gwo3kyoyXYoloDSmg0m.t4FWCvDOtbcwL.o8mfQ0FS2adW9DjYG",
+      "id": 14,
+      "name": "pan"
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  }
+}
