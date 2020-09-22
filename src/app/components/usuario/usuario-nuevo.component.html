@@ -35,6 +35,33 @@
           </div>
 
           <div class="form-group">
+            <label>Perfil</label>
+
+            <select
+              class="form-control"
+              name="perfil"
+              [ngModel]="usuario.perfil"
+              [class.is-invalid]="perfil.invalid && perfil.touched"
+              required
+              #perfil="ngModel"
+            >
+              <option value="AP" class="text-uppercase">
+                analista de pruebas
+              </option>
+              <option value="LP" class="text-uppercase">
+                lider de pruebas
+              </option>
+              <option value="AD" class="text-uppercase">administrador</option>
+            </select>
+
+            <small
+              class="form-text text-danger"
+              *ngIf="perfil.invalid && perfil.touched"
+              >Ingrese Perfil de Usuario</small
+            >
+          </div>
+
+          <div class="form-group">
             <label>Email</label>
 
             <input

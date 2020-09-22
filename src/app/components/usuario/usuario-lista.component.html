@@ -7,6 +7,7 @@
         <tr>
           <th scope="col">ID</th>
           <th scope="col">Nombre y Apellidos</th>
+          <th scope="col">Perfil</th>
           <th scope="col">Email</th>
           <th scope="col">Actualizar</th>
           <th scope="col">Borrar</th>
@@ -16,6 +17,15 @@
         <tr *ngFor="let usuario of usuariosRegistrados">
           <td>{{ usuario.id }}</td>
           <td>{{ usuario.name }}</td>
+          <td>
+            {{
+              usuario.perfil == "AD"
+                ? "administrador"
+                : usuario.perfil == "AP"
+                ? "analista de pruebas"
+                : "lider de pruebas"
+            }}
+          </td>
           <td>{{ usuario.email }}</td>
           <td>
             <button (click)="borrar(usuario)" class="btn btn-primary">
