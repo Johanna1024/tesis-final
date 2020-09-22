@@ -1,13 +1,6 @@
 {
   "users": [
     {
-      "id": 2,
-      "name": "julian velasquez",
-      "perfil": "AD",
-      "email": "carjul20@gmail.com",
-      "password": "Password2020"
-    },
-    {
       "id": 3,
       "name": "natalia lozano cardona",
       "perfil": "AD",

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { UsuarioModel } from 'src/app/models/usuario.model';
 import { JsonServerService } from './../../services/json-server.service';
 
@@ -11,7 +12,7 @@ export class UsuarioListaComponent implements OnInit {
   alertBorrado: boolean = false;
   usuariosRegistrados: any[] = [];
 
-  constructor(private jsonServer: JsonServerService) {
+  constructor(private jsonServer: JsonServerService, private router: Router) {
     jsonServer.listarUsuarios().subscribe((data: any) => {
       console.log(data);
       this.usuariosRegistrados = data;
@@ -23,6 +24,11 @@ export class UsuarioListaComponent implements OnInit {
     this.jsonServer.borrarUsuario(usuario).subscribe();
     this.alertBorrado = true;
     window.location.reload();
+  }
+
+  actualizar(usuario: UsuarioModel) {
+    console.log(usuario);
+    this.router.navigate(['usuarios/actualizar']);
   }
 
   ngOnInit(): void {}

@@ -28,8 +28,18 @@
           </td>
           <td>{{ usuario.email }}</td>
           <td>
-            <button (click)="borrar(usuario)" class="btn btn-primary">
-              <i class="fa fa-trash"></i> Actualizar
+            <button
+              [routerLink]="[
+                '/usuarios/actualizar/',
+                usuario.id,
+                usuario.email,
+                usuario.name,
+                usuario.perfil,
+                usuario.password
+              ]"
+              class="btn btn-primary"
+            >
+              <i class="fa fa-pen"></i> Actualizar
             </button>
           </td>
           <td>

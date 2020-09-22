@@ -55,6 +55,14 @@ export class JsonServerService {
     );
   }
 
+  actualizarUsuario(usuario: UsuarioModel, id: string) {
+    return this.http.put(`${this.url}users/${id}`, usuario).pipe(
+      map((resp) => {
+        return resp;
+      })
+    );
+  }
+
   salir() {
     localStorage.removeItem('loggedIn');
   }
