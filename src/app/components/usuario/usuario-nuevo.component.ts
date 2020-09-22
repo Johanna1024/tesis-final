@@ -32,7 +32,7 @@ export class UsuarioNuevoComponent implements OnInit {
 
     //var myNumeroAleatorio = Math.floor(Math.random() * 101);
 
-    let authData: object = {
+    let authData = {
       id: Math.floor(Math.random() * 101),
       ...form.value,
     };
