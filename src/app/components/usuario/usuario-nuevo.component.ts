@@ -12,7 +12,7 @@ import { Router } from '@angular/router';
 })
 export class UsuarioNuevoComponent implements OnInit {
   alertNuevoUser: boolean = false;
-  forma: FormGroup;
+  //forma: FormGroup;
   usuario: UsuarioModel = new UsuarioModel();
 
   constructor(private jsonServer: JsonServerService, private router: Router) {}
