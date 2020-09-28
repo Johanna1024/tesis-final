@@ -3,6 +3,7 @@ import { ActivatedRoute, Params, Router } from '@angular/router';
 import { UsuarioModel } from './../../models/usuario.model';
 import { NgForm } from '@angular/forms';
 import { JsonServerService } from 'src/app/services/json-server.service';
+import { SpringServerService } from 'src/app/services/spring-server.service';
 
 @Component({
   selector: 'app-usuario-actualizar',
@@ -17,6 +18,7 @@ export class UsuarioActualizarComponent implements OnInit {
   constructor(
     private rutaActiva: ActivatedRoute,
     private jsonServer: JsonServerService,
+    private springServer: SpringServerService,
     private router: Router
   ) {}
 
@@ -49,13 +51,20 @@ export class UsuarioActualizarComponent implements OnInit {
 
     console.log(authData);
 
-    // Autenticar Usuario
-    this.jsonServer
+    // Actualizar Usuario
+    this.springServer
       .actualizarUsuario(authData, this.usuario.id)
       .subscribe((res) => {
         console.log(res);
         this.alertActualizaUser = true;
         this.router.navigate(['usuarios/lista']);
       });
+    /*this.jsonServer
+      .actualizarUsuario(authData, this.usuario.id)
+      .subscribe((res) => {
+        console.log(res);
+        this.alertActualizaUser = true;
+        this.router.navigate(['usuarios/lista']);
+      });*/
   }
 }

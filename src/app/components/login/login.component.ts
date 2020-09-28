@@ -4,6 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 
 import { UsuarioModel } from './../../models/usuario.model';
 import { JsonServerService } from './../../services/json-server.service';
+import { SpringServerService } from './../../services/spring-server.service';
 
 @Component({
   selector: 'app-login',
@@ -16,6 +17,7 @@ export class LoginComponent implements OnInit {
 
   constructor(
     private jsonServer: JsonServerService,
+    private springServer: SpringServerService,
     private route: ActivatedRoute,
     private router: Router
   ) {}
@@ -40,7 +42,35 @@ export class LoginComponent implements OnInit {
 
     console.log(authData);
 
-    // Autenticar Usuario
+    this.springServer.login(authData).subscribe(
+      (res) => {
+        console.log('success', res);
+        console.log(`existe el usuario`);
+        this.alertErrorAuth = false;
+
+        const usuarioLocal = {
+          loggedIn: true,
+          usuario: this.usuario.email,
+        };
+
+        //guardar informacion en el localstorage
+        localStorage.setItem('loggedIn', JSON.stringify(usuarioLocal));
+        //window.location.reload();
+        this.router.navigate(['/home']);
+
+        setTimeout(() => {
+          window.location.reload();
+        }, 1000);
+      },
+      (error) => {
+        console.log('oops', error);
+        this.alertErrorAuth = true;
+      }
+    );
+
+    return;
+
+    // Autenticar Usuario JSON server
     this.jsonServer.autenticar(authData).subscribe((res) => {
       console.log(res);
 
@@ -72,8 +102,6 @@ export class LoginComponent implements OnInit {
           this.alertErrorAuth = true;
         }
       }
-      //this.router.navigate(['home']);
-      //this.alertUsuarioNuevo = true;
     });
 
     console.log(`Login`);

@@ -4,6 +4,7 @@ import { JsonServerService } from './../../services/json-server.service';
 import { NgForm } from '@angular/forms';
 import { UsuarioModel } from './../../models/usuario.model';
 import { Router } from '@angular/router';
+import { SpringServerService } from 'src/app/services/spring-server.service';
 
 @Component({
   selector: 'app-usuario-nuevo',
@@ -15,7 +16,11 @@ export class UsuarioNuevoComponent implements OnInit {
   //forma: FormGroup;
   usuario: UsuarioModel = new UsuarioModel();
 
-  constructor(private jsonServer: JsonServerService, private router: Router) {}
+  constructor(
+    private jsonServer: JsonServerService,
+    private springServer: SpringServerService,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {}
 
@@ -41,12 +46,19 @@ export class UsuarioNuevoComponent implements OnInit {
 
     console.log(authData);
 
-    // Autenticar Usuario
-    this.jsonServer.guardarUsuario(authData).subscribe((res) => {
+    // Guardar Usuario
+    this.springServer.guardarUsuario(authData).subscribe((res) => {
       console.log(res);
       this.alertNuevoUser = true;
       this.router.navigate(['usuarios/lista']);
     });
+
+    // Autenticar Usuario
+    /*this.jsonServer.guardarUsuario(authData).subscribe((res) => {
+      console.log(res);
+      this.alertNuevoUser = true;
+      this.router.navigate(['usuarios/lista']);
+    });*/
 
     //Datos de autenticacion
     //console.log(form.value);

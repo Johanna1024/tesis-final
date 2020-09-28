@@ -19,6 +19,12 @@ const routes: Routes = [
     children: USUARIO_ROUTES,
     canActivate: [AuthGuard],
   },
+  {
+    path: 'archivos',
+    component: UsuarioComponent,
+    children: USUARIO_ROUTES,
+    canActivate: [AuthGuard],
+  },
   { path: '**', pathMatch: 'full', redirectTo: 'home' },
 ];
 

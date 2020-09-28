@@ -24,6 +24,13 @@
       >
         <a class="nav-link" routerLink="/usuarios">Usuarios</a>
       </li>
+      <li
+        *ngIf="(authUser | json) != ({} | json)"
+        class="nav-item"
+        routerLinkActive="active"
+      >
+        <a class="nav-link" routerLink="/archivos">Subida Archivos</a>
+      </li>
     </ul>
     <span class="navbar-text">
       <button
