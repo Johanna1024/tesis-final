@@ -53,4 +53,12 @@ export class SpringServerService {
       })
     );
   }
+
+  public guardarArchivo(file: string) {
+    return this.http.post(`${this.url}upload-file`, file).pipe(
+      map((resp) => {
+        return resp;
+      })
+    );
+  }
 }

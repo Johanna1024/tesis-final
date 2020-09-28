@@ -11,7 +11,7 @@ import { NgForm } from '@angular/forms';
 })
 export class ArchivosComponent implements OnInit {
   file: string = '';
-  constructor() {}
+  constructor(private springServer: SpringServerService) {}
 
   ngOnInit(): void {}
 
@@ -25,5 +25,12 @@ export class ArchivosComponent implements OnInit {
     };
 
     console.log(authData);
+
+    // Guardar Archivo
+    this.springServer.guardarArchivo(authData).subscribe((res) => {
+      console.log(res);
+      //this.alertNuevoUser = true;
+      //this.router.navigate(['usuarios/lista']);
+    });
   }
 }
