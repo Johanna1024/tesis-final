@@ -1,0 +1,42 @@
+<div class="row justify-content-center animate__animated animate__bounceInUp">
+  <div class="col-md-6">
+    <div class="card">
+      <img
+        src="assets/img/logo-pw-usb_0.png"
+        alt="universidad"
+        height="350"
+        class="card-img"
+      />
+      <div class="card-body">
+        <form
+          autocomplete="off"
+          #uploadForm="ngForm"
+          (ngSubmit)="subir(uploadForm)"
+        >
+          <div class="custom-file">
+            <input
+              type="file"
+              class="custom-file-input"
+              id="customFileLang"
+              lang="es"
+              [(ngModel)]="file"
+              name="file"
+              #name="ngModel"
+              required
+            />
+            <label class="custom-file-label" for="customFileLang"
+              >Seleccionar Archivo</label
+            >
+          </div>
+
+          <hr />
+          <div class="formgroup text-center">
+            <button type="submit" class="btn btn-warning w-35">
+              <i class="fa fa-save"></i> <strong> Subir</strong>
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
