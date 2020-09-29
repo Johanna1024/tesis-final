@@ -20,6 +20,7 @@ export class CargaArchivosService {
     console.log(archivos);
 
     const storageRef = firebase.storage().ref();
+    let urltemp = '';
 
     for (const item of archivos) {
       item.estaSubiendo = true;
@@ -42,9 +43,14 @@ export class CargaArchivosService {
         },
         () => {
           console.log(`Imagen cargada correctamente`);
-          item.url = uploadTask.snapshot.downloadURL;
-          item.estaSubiendo = false;
-          this.guardarArchivo({ nombre: item.nombreArchivo, url: item.url });
+
+          uploadTask.snapshot.ref.getDownloadURL().then((downloadURL) => {
+            item.url = downloadURL;
+            console.log('URL:' + item.url);
+            console.log(item.url);
+            item.estaSubiendo = false;
+            this.guardarArchivo({ nombre: item.nombreArchivo, url: item.url });
+          });
         }
       );
     }

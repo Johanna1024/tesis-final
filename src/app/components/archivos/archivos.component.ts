@@ -29,13 +29,20 @@ export class ArchivosComponent implements OnInit {
   archivos: FileItem[] = [];
 
   file: string = '';
+
   constructor(
     private springServer: SpringServerService,
     public cargaArchivosService: CargaArchivosService,
-    private readonly afs: AngularFirestore
+    public afs: AngularFirestore
   ) {
     this.itemsCollection = afs.collection<Item>('img');
     this.items = this.itemsCollection.valueChanges();
+
+    this.itemsCollection.valueChanges().subscribe((data) => {
+      console.log(data);
+    });
+
+    console.log('items = ', this.items);
   }
 
   ngOnInit(): void {}
