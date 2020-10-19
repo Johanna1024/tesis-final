@@ -29,6 +29,7 @@ export class NgDropFilesDirective {
 
   @HostListener('drop', ['$event'])
   public onDrop(event: any) {
+
     const transferencia = this._getTransferencia(event);
 
     if (!transferencia) {
@@ -41,6 +42,7 @@ export class NgDropFilesDirective {
     this.mouseSobre.emit(false);
   }
 
+  //Compatibilidad
   private _getTransferencia(event: any) {
     return event.dataTransfer
       ? event.dataTransfer
@@ -53,19 +55,21 @@ export class NgDropFilesDirective {
     for (const propiedad in Object.getOwnPropertyNames(archivosLista)) {
       const archivoTemp = archivosLista[propiedad];
 
+      console.log(archivoTemp);
+
       if (this._archivoPuedeSerCargado(archivoTemp)) {
         const nuevoArchivo = new FileItem(archivoTemp);
         this.archivos.push(nuevoArchivo);
       }
     }
+
+    console.log(this.archivos)
   }
 
-  //Validaciones
+  //VALIDACIONES
   private _archivoPuedeSerCargado(archivo: File): boolean {
-    if (
-      !this._archivoYaFueDroppeado(archivo.name) &&
-      this._esImagen(archivo.type)
-    ) {
+    //if (!this._archivoYaFueDroppeado(archivo.name) && this._esImagen(archivo.type)) {
+    if (!this._archivoYaFueDroppeado(archivo.name)) {
       return true;
     } else {
       return false;
@@ -80,7 +84,7 @@ export class NgDropFilesDirective {
   private _archivoYaFueDroppeado(nombreArchivo: string): boolean {
     for (const archivo of this.archivos) {
       if (archivo.nombreArchivo == nombreArchivo) {
-        console.log(`El Archivo ${nombreArchivo} ya agregado`);
+        console.log(`El Archivo ${nombreArchivo} ya existe.`);
         return true;
       }
     }
@@ -89,10 +93,8 @@ export class NgDropFilesDirective {
   }
 
   private _esImagen(tipoArchivo: string): boolean {
-    return tipoArchivo === '' || tipoArchivo === undefined
-      ? false
-      : tipoArchivo.startsWith('image');
+    console.log(tipoArchivo)
+    return tipoArchivo === '' || tipoArchivo === undefined ? false : tipoArchivo.startsWith('image');
   }
 
-  constructor() {}
 }

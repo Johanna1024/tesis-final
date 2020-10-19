@@ -19,6 +19,7 @@ import { UsuarioComponent } from './components/usuario/usuario.component';
 import { UsuarioActualizarComponent } from './components/usuario/usuario-actualizar.component';
 import { ArchivosComponent } from './components/archivos/archivos.component';
 import { ArchivosSubirComponent } from './components/archivos/archivos-subir.component';
+import { ChartsModule } from 'ng2-charts';
 
 //Firebase
 import { AngularFireModule } from 'angularfire2';
@@ -27,6 +28,12 @@ import { AngularFireStorageModule } from 'angularfire2/storage';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { environment } from '../environments/environment';
 import { NgDropFilesDirective } from './directives/ng-drop-files.directive';
+import { ArchivosListComponent } from './components/archivos/archivos-list.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { GraficoUnoComponent } from './components/grafico-uno/grafico-uno.component';
+import { GraficoDosComponent } from './components/grafico-dos/grafico-dos.component';
+import { GraficoTresComponent } from './components/grafico-tres/grafico-tres.component';
+
 
 @NgModule({
   declarations: [
@@ -45,6 +52,11 @@ import { NgDropFilesDirective } from './directives/ng-drop-files.directive';
     ArchivosComponent,
     ArchivosSubirComponent,
     NgDropFilesDirective,
+    ArchivosListComponent,
+    GraficoUnoComponent,
+    GraficoDosComponent,
+    GraficoTresComponent,
+
   ],
   imports: [
     AngularFireModule.initializeApp(environment.firebase),
@@ -56,6 +68,8 @@ import { NgDropFilesDirective } from './directives/ng-drop-files.directive';
     FormsModule,
     HttpClientModule,
     ReactiveFormsModule,
+    FontAwesomeModule,
+    ChartsModule
   ],
   providers: [],
   bootstrap: [AppComponent],
